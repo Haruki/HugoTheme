@@ -11,6 +11,7 @@
 		{{- if .Param "authorsinlist" }}
 		{{- range .Param "authors" }} by {{ . }}{{ end -}}
 		{{ end -}}
+		{{ .Content }}
 		</li>
 {{- end }}
 </ul>
