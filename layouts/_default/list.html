@@ -10,7 +10,9 @@
 		<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 		{{- if .Param "authorsinlist" }}
 		{{- range .Param "authors" }} by {{ . }}{{ end -}}
-		{{ end -}}
+		{{ end -}}<br>
+		{{ .Date }}<br>
+		{{ .File }}<br>
 		{{ .Content }}
 		</li>
 {{- end }}
