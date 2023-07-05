@@ -15,7 +15,12 @@
 		{{ .File }}<br>
 		{{ .Content }}
 		{{ .ReadingTime }}
+
+		{{if (isset .Params "wurst")}}
+		<br> WWUURRSSTT: <br>
 		{{ .Params.wurst }}
+		{{ end }}
+
 		</li>
 {{- end }}
 </ul>
