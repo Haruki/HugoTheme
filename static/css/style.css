@@ -45,8 +45,8 @@ footer {
   max-width: 33%;
 }
 
-.kaesebrot {
-  border-radius: 8px;
+.article {
+  border-radius: 16px;
   padding: 20px;
   margin-top: 60px;
   margin-bottom: 60px;
