@@ -22,10 +22,10 @@
 {{ block "main" . }}
 {{ .Content }}
 {{ end }}
-{{ block "keks" . }}
-keksblock
+{{ block "keks" .}}
+keksblock from baseof.html
 {{ end }}
-{{ if .Site.Params.disqus }}{{ partial "disqus.html" . -}}{{ end -}
+{{ if .Site.Params.disqus }}{{ partial "disqus.html" . -}}{{ end -}}
 {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
 {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
 </article>
