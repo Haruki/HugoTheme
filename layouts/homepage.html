@@ -1,0 +1,18 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+<p>Welcome to My Website</p>
+
+<p>Here are my Markdown files from different folders:</p>
+
+{{ range readDir "content" }}
+  {{ if .IsDir }}
+    {{ $folder := .Name }}
+    {{ range readDir (printf "content/%s" $folder) }}
+      {{ if and (not .IsDir) (strings.HasSuffix .Name ".md") }}
+        <p><a href="{{ .RelPermalink }}">{{ .Name }}</a></p>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ end }}

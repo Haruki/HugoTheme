@@ -2,8 +2,13 @@
 {{ .Title }}
 {{- end }}
 
+
+
 {{ define "keks" -}}
 keksblock
 {{ end }}
+
 {{ .Content }}
-{{ .WordCount }}
+
+
+{{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}

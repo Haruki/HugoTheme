@@ -10,11 +10,11 @@
 		<a href="{{ .RelPermalink }}">{{ .Title }}</a>
 		{{- if .Param "authorsinlist" }}
 		{{- range .Param "authors" }} by {{ . }}{{ end -}}
-		{{ end -}}<br>
-		{{ .Date }}<br>
-		{{ .File }}<br>
+		{{ end -}}<br><br>
+		{{ .Date.Format "2006-01-02" }}{{with .File }}&nbsp;&nbsp;&nbsp;&nbsp;<i>Markdown File:</i>({{ .File }})<br><br><br>{{ end }}
+		
 		{{ .Content }}
-		{{ .ReadingTime }}
+		{{if gt .ReadingTime 0}}<i>ReadingTime:</i>{{ .ReadingTime }}{{end}}
 
 		{{if (isset .Params "wurst")}}
 		<br> WWUURRSSTT: <br>
