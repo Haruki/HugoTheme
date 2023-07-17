@@ -1,14 +1,13 @@
 {{ define "title" -}}
 {{ .Title }}
 {{- end }}
-
-
-
-{{ define "keks" -}}
-keksblock
+{{ define "main" -}}
+<div class="article">
+{{ .Content }}
+{{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}
+</div>
 {{ end }}
 
-{{ .Content }}
 
 
-{{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}
+
