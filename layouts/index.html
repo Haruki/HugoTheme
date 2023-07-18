@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="content">
+        {{ range .Site.Pages }}
+            <div class="article">
+                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                {{ .Content }}
+            </div>
+        {{ end }}
+    </div>
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            {{ range .Site.Pages }}
+                <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+</body>
+</html>
