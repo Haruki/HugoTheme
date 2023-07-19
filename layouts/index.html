@@ -6,11 +6,13 @@
 </head>
 <body>
     <div class="content">
-        {{ range .Site.Pages }}
+        {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
+        {{ if and (ne .Kind "section") (not .IsHome) }}
             <div class="article">
                 <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
                 {{ .Content }}
             </div>
+            {{ end }}
         {{ end }}
     </div>
     <div class="sidebar">
