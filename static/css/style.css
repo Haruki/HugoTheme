@@ -2,6 +2,10 @@ body {
   font-family: sans-serif;
   background: #110000;
   color: #ccc;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'content sidebar';
 }
 
 main {
@@ -50,5 +54,15 @@ footer {
   padding: 20px;
   margin-top: 60px;
   margin-bottom: 60px;
+  background-color: rgb(41, 41, 41);
+}
+
+.content {
+  grid-area: content;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  padding: 20px;
   background-color: rgb(41, 41, 41);
 }
