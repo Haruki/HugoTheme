@@ -18,10 +18,12 @@
     <div class="sidebar">
         <h2>Navigation</h2>
         <ul>
-            {{ range .Site.Pages }}
+            {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
+        {{ if and (ne .Kind "section") (not .IsHome) }}
                 <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
             {{ end }}
-        </ul>
+            {{ end }}
+        </ul> 
     </div>
 </body>
 </html>
