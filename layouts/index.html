@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>{{ .Site.Title }}</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
     <div class="content">
-        {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
-        {{ if and (ne .Kind "section") (not .IsHome) }}
-            <div class="article">
-                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-                {{ .Content }}
-            </div>
-            {{ end }}
-        {{ end }}
+      {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
+      {{ if and (ne .Kind "section") (not .IsHome) }}
+      <div class="article">
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        {{ .Content }}
+      </div>
+      {{ end }} {{ end }}
     </div>
     <div class="sidebar">
-        <h2>Navigation</h2>
-        <ul>
-            {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
-        {{ if and (ne .Kind "section") (not .IsHome) }}
-                <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-            {{ end }}
-            {{ end }}
-        </ul> 
+      <h2>Navigation</h2>
+      <ul>
+        {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags")
+        }} {{ if and (ne .Kind "section") (not .IsHome) }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }} {{ end }}
+      </ul>
     </div>
-</body>
+  </body>
 </html>
