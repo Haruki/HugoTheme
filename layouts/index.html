@@ -8,7 +8,7 @@
     <div class="content">
       {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
       {{ if and (ne .Kind "section") (not .IsHome) }}
-      <div class="article">
+      <div class="article" id="{{ .Title | urlize}}">
         <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         {{ .Content }}
       </div>
@@ -18,8 +18,12 @@
       <h2>Navigation</h2>
       <ul>
         {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags")
-        }} {{ if and (ne .Kind "section") (not .IsHome) }}
+        }} {{ if and (ne .Kind "section") (not .IsHome) }} {{/*
         <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        */}} {{/*
+        <li><a href="{{ .Params.anchor }}">{{ .Title }}</a></li>
+        */}}
+        <li><a href="#{{ .Title | urlize }}">{{ .Title }}</a></li>
         {{ end }} {{ end }}
       </ul>
     </div>
