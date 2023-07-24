@@ -17,14 +17,15 @@
     <div class="sidebar">
       <h2>Navigation</h2>
       <ul>
-        {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags")
-        }} {{ if and (ne .Kind "section") (not .IsHome) }} {{/*
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-        */}} {{/*
-        <li><a href="{{ .Params.anchor }}">{{ .Title }}</a></li>
-        */}}
-        <li><a href="#{{ .Title | urlize }}">{{ .Title }}</a></li>
-        {{ end }} {{ end }}
+        {{ range .Site.Sections }}
+        <li>{{ .Title }}</li>
+        <ul>
+          {{ range where .Pages "Type" "not in" (slice "categories" "tags") }}
+          {{ if and (ne .Kind "section") (not .IsHome) }}
+          <li><a href="#{{ .Title | urlize }}">{{ .Title }}</a></li>
+          {{ end }} {{ end }}
+        </ul>
+        {{ end }}
       </ul>
     </div>
   </body>
