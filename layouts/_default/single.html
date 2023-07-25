@@ -1,13 +1,5 @@
-{{ define "title" -}}
-{{ .Title }}
-{{- end }}
-{{ define "main" -}}
+{{/* {{ define "title" -}} {{ .Title }} {{- end }} */}} {{ define "main" -}}
 <div class="article">
-{{ .Content }}
-{{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}
+  {{ .Content }} {{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}
 </div>
 {{ end }}
-
-
-
-
