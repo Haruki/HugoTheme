@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  font-family: 'Roboto', sans-serif;
 }
 
 .content {
@@ -31,6 +32,16 @@ body {
 
 pre code {
   white-space: pre-wrap;
+}
+
+pre,
+:not(pre) > code {
+  background-color: #222222;
+  padding: 0px 8px;
+  border-radius: 8px;
+  color: rgb(255, 208, 0);
+  font-family: 'Fira Code', monospace;
+  font-size: 90%;
 }
 
 h2 {
