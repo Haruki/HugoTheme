@@ -20,7 +20,7 @@
       {{ end }} {{ end }}
     </div>
     <div class="sidebar">
-      <h2>Navigation</h2>
+      <h2>Wiki</h2>
       {{ range .Site.Sections }}
       <div class="section-nav">{{ .Title }}</div>
       {{ range where .Pages "Type" "not in" (slice "categories" "tags") }} {{ if
