@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     articleNavs.forEach(function (articleNav) {
       const title = articleNav.textContent.toLowerCase();
 
-      if (title.includes(query) && query.length >= 3) {
+      if (query.length < 3 || title.includes(query)) {
         articleNav.style.display = 'block';
       } else {
         articleNav.style.display = 'none';
