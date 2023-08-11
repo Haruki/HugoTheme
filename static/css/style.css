@@ -80,6 +80,8 @@ a:hover {
 }
 
 .article_nav {
+  width: 100%;
+  max-width: 300px;
   padding-left: 10px;
   font-size: 80%;
 }
