@@ -3,6 +3,8 @@ body {
   padding: 0;
   display: flex;
   font-family: 'Roboto', sans-serif;
+  color: whitesmoke;
+  background-color: black;
 }
 
 .content {
@@ -71,7 +73,7 @@ ul {
 }
 
 a {
-  color: #333;
+  color: #b9b9b9;
   text-decoration: none;
 }
 
