@@ -29,7 +29,7 @@
       <div class="section-nav">{{ .Title }}</div>
       {{ range where .Pages "Type" "not in" (slice "categories" "tags") }} {{ if
       and (ne .Kind "section") (not .IsHome) }}
-      <div class="article_nav">
+      <div class="article_nav" {{if .Params.tags }}data-tags="{{ delimit .Params.tags ", " }}"{{end}}>
         <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
       </div>
       {{ end }} {{ end }} {{ end }}

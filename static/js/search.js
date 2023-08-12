@@ -7,8 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     articleNavs.forEach(function (articleNav) {
       const title = articleNav.textContent.toLowerCase();
-
-      if (query.length < 3 || title.includes(query)) {
+      const tags = articleNav.dataset?.tags?.toLowerCase();
+      if (
+        query.length < 3 ||
+        title.includes(query) ||
+        (tags && tags.includes(query))
+      ) {
         articleNav.style.display = 'block';
       } else {
         articleNav.style.display = 'none';
