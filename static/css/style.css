@@ -10,6 +10,8 @@ body {
 .content {
   flex: 2;
   padding: 20px;
+  max-width: calc(100% - 40px);
+  margin-right: auto;
 }
 
 .sidebar {
@@ -21,13 +23,13 @@ body {
   right: 0;
   height: 100%;
   overflow-y: auto;
+  max-width: calc(1 / 3 * 100% - 40px);
 }
 
 .article {
   margin-bottom: 40px;
   border-radius: 16px;
   padding: 4px 20px;
-  margin: 60px;
   background-color: rgb(41, 41, 41);
   max-width: 60%;
   word-break: break-all;
@@ -85,4 +87,9 @@ a:hover {
 .article_nav {
   padding-left: 10px;
   font-size: 80%;
+}
+
+.content img {
+  max-width: 100%;
+  width: auto;
 }
