@@ -16,13 +16,7 @@
     <script src="/js/scroll.js"></script>
   </head>
   <body>
-    <div class="content">
-      {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
-      {{ if and (ne .Kind "section") (not .IsHome) }}
-      <div class="article" id="{{ .Title | urlize}}">{{ .Content }}</div>
-      {{ end }} {{ end }}
-    </div>
-    <div class="sidebar">
+    <div class="sidebar"> 
       <h2>Wiki</h2>
       <div class="search">
         <input type="text" id="search-input" placeholder="Search..." />
@@ -38,6 +32,12 @@
   {{ end }}
 {{ end }}
 
+    </div>
+    <div class="content">
+      {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
+      {{ if and (ne .Kind "section") (not .IsHome) }}
+      <div class="article" id="{{ .Title | urlize}}">{{ .Content }}</div>
+      {{ end }} {{ end }}
     </div>
     <footer>
         <!-- Scroll to top button -->
