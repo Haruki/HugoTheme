@@ -4,6 +4,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: start;
+    flex-direction: column-reverse;
   font-family: 'Roboto', sans-serif;
   color: whitesmoke;
   background-color: black;
