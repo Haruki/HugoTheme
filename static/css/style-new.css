@@ -2,6 +2,7 @@ body {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
+  flex-grow: 1;
   gap: 1rem;
   font-family: 'Roboto', sans-serif;
   color: whitesmoke;
@@ -9,8 +10,8 @@ body {
 }
 
 .content {
-  flex-basis: 200px;
-  flex-grow: 1;
+  flex-basis: 150px;
+  flex-grow: 9999;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -18,6 +19,20 @@ body {
 
 .sidebar {
   flex-basis: 300px;
+}
+
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 48px;
+    width: 48px;
 }
 
 .article {

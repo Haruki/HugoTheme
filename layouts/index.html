@@ -7,37 +7,40 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/js/search.js"></script>
-    <script src="/js/scroll.js"></script>
-  </head>
-  <body>
-    <div class="sidebar"> 
-      <h2>Wiki</h2>
-      <div class="search">
-        <input type="text" id="search-input" placeholder="Search..." />
-      </div>
-{{ range .Site.Sections }}
-  <div class="section-nav">{{ .Title }}</div>
-  {{ range sort (where .Pages "Type" "not in" (slice "categories" "tags")) "Title" "asc" }}
-    {{ if and (ne .Kind "section") (not .IsHome) }}
-      <div class="article_nav" {{if .Params.tags }}data-tags="{{ delimit .Params.tags ", " }}"{{end}}>
-        <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
-      </div>
-    {{ end }}
-  {{ end }}
-{{ end }}
-
-    </div>
-    <div class="content">
-      {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
-      {{ if and (ne .Kind "section") (not .IsHome) }}
-      <div class="article" id="{{ .Title | urlize}}">{{ .Content }}</div>
-      {{ end }} {{ end }}
-    </div>
-  </body>
-</html>
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+        rel="stylesheet"
+        />
+        <script src="/js/search.js"></script>
+        <script src="/js/scroll.js"></script>
+      </head>
+      <body>
+        <div class="sidebar">
+          <h2>Wiki</h2>
+          <div class="search">
+            <input type="text" id="search-input" placeholder="Search..." />
+          </div>
+          {{ range .Site.Sections }}
+          <div class="section-nav">{{ .Title }}</div>
+          {{ range sort (where .Pages "Type" "not in" (slice "categories" "tags")) "Title" "asc" }}
+          {{ if and (ne .Kind "section") (not .IsHome) }}
+          <div class="article_nav" {{if .Params.tags }}data-tags="{{ delimit .Params.tags ", " }}"{{end}}>
+            <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
+          </div>
+          {{ end }}
+          {{ end }}
+          {{ end }}
+        </div>
+        <div class="content">
+          {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
+          {{ if and (ne .Kind "section") (not .IsHome) }}
+          <div class="article" id="{{ .Title | urlize}}">{{ .Content }}</div>
+          {{ end }} {{ end }}
+        </div>
+        <div>
+          <!-- Scroll to top button -->
+          <button id="scrollToTopBtn">☝️</button>
+        </div>
+      </body>
+    </html>
