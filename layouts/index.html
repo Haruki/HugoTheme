@@ -35,7 +35,9 @@
         <div class="content">
           {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
           {{ if and (ne .Kind "section") (not .IsHome) }}
-          <div class="article" id="{{ .Title | urlize}}">{{ .Content }}</div>
+          <div class="article" id="{{ .Title | urlize}}">
+          {{ .Date.Format "2006 January 2" }}<br>
+          {{ .Content }}</div>
           {{ end }} {{ end }}
         </div>
         <div>
