@@ -1,5 +1,12 @@
 {{/* {{ define "title" -}} {{ .Title }} {{- end }} */}} {{ define "main" -}}
 <div class="article">
+  {{ $showToc := or (.Param "showtoc") (.Param "toc") }}
+  {{ if $showToc }}
+  <div class="article-toc">
+    <h2>Contents</h2>
+    {{ .TableOfContents }}
+  </div>
+  {{ end }}
   {{ .Content }} {{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}
 </div>
 {{ end }}

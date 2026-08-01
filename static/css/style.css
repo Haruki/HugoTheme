@@ -69,10 +69,52 @@ h2 {
   margin-top: 0;
 }
 
-ul {
+nav ul,
+.sidebar ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.article ul {
+  list-style: disc;
+  margin: 0.5em 0 0.75em;
+  padding-left: 1.5em;
+}
+
+.article ul ul {
+  list-style-type: circle;
+}
+
+.article ul ul ul {
+  list-style-type: square;
+}
+
+.article li {
+  margin: 0.2em 0;
+}
+
+.article-toc {
+  margin-bottom: 1em;
+  border: 1px solid #4a4a4a;
+  border-radius: 12px;
+  padding: 0.75em 1em;
+  background-color: #202020;
+}
+
+.article-toc h2 {
+  margin: 0 0 0.5em;
+  font-size: 1.1rem;
+}
+
+.article-toc nav ul {
+  list-style: disc;
+  margin: 0.5em 0 0.75em;
+  padding-left: 1.5em;
+}
+
+.article-toc nav ul ul {
+  list-style-type: circle;
 }
 
 a {
