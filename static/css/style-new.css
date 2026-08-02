@@ -108,6 +108,28 @@ nav ul,
   list-style-type: circle;
 }
 
+.article-body {
+  line-height: 1.55;
+}
+
+.article-body :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.25;
+  margin-top: 1.35em;
+  margin-bottom: 0.45em;
+}
+
+.article-body :is(h2, h3, h4, h5, h6) {
+  scroll-margin-top: 1.2rem;
+}
+
+.article-body :is(h2, h3, h4, h5, h6) + :is(p, ul, ol, pre, blockquote, table) {
+  margin-left: 0.6rem;
+}
+
+.article-body > :first-child {
+  margin-top: 0;
+}
+
 a {
   color: #b9b9b9;
   text-decoration: none;

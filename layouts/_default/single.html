@@ -7,6 +7,9 @@
     {{ .TableOfContents }}
   </div>
   {{ end }}
-  {{ .Content }} {{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}
+  <div class="article-body">
+    {{ .Content }}
+  </div>
+  {{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}
 </div>
 {{ end }}
