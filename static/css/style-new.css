@@ -108,29 +108,29 @@ nav ul,
   list-style-type: circle;
 }
 
-.article-body {
+:is(.article-body, .article) {
   line-height: 1.55;
 }
 
-.article-body :is(h1, h2, h3, h4, h5, h6) {
+:is(.article-body, .article) :is(h1, h2, h3, h4, h5, h6) {
   line-height: 1.25;
   margin-top: 1.35em;
   margin-bottom: 0.45em;
 }
 
-.article-body :is(h2, h3, h4, h5, h6) {
+:is(.article-body, .article) :is(h2, h3, h4, h5, h6) {
   scroll-margin-top: 1.2rem;
 }
 
-.article-body > :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+:is(.article-body, .article) > :not(.article-toc):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   margin-left: 0.65rem;
 }
 
-.article-body > .highlight {
+:is(.article-body, .article) > .highlight {
   margin-left: 0.65rem;
 }
 
-.article-body > :first-child {
+:is(.article-body, .article) > :first-child {
   margin-top: 0;
 }
 
