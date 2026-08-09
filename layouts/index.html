@@ -38,7 +38,16 @@
           {{ if and (ne .Kind "section") (not .IsHome) }}
           <div class="article" id="{{ .Title | urlize}}">
           {{ .Date.Format "2006 January 2" }}<br>
-          {{ .Content }}</div>
+          {{ $showToc := or (.Param "showtoc") (.Param "toc") }}
+          {{ $toc := .TableOfContents }}
+          {{ if and $showToc (gt (len $toc) 0) }}
+          <div class="article-toc">
+            <h2>Contents</h2>
+            {{ $toc }}
+          </div>
+          {{ end }}
+          {{ .Content }}
+          {{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}</div>
           {{ end }} {{ end }}
         </div>
         <div>
