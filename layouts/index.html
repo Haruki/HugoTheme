@@ -40,10 +40,12 @@
           {{ .Date.Format "2006 January 2" }}<br>
           {{ $showToc := or (.Param "showtoc") (.Param "toc") }}
           {{ $toc := .TableOfContents }}
+          {{ $toc = replaceRE `(?s)^<nav id="TableOfContents">\s*<ul>\s*<li>\s*<ul>` `<nav id="TableOfContents"><ul>` $toc }}
+          {{ $toc = replaceRE `(?s)</ul>\s*</li>\s*</ul>\s*</nav>$` `</ul></nav>` $toc }}
           {{ if and $showToc (gt (len $toc) 0) }}
           <div class="article-toc">
             <h2>Contents</h2>
-            {{ $toc }}
+            {{ $toc | safeHTML }}
           </div>
           {{ end }}
           {{ .Content }}
