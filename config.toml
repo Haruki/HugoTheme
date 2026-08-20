@@ -6,3 +6,9 @@ languageCode = 'en-us'
   # "relatedtext" is the text that appears above the tag list at the bottom of pages.
   #relatedtext = "Related:"
   favicon = "/favicon.ico"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
