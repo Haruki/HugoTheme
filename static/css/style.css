@@ -165,3 +165,12 @@ a:hover {
   max-width: 100%;
   width: auto;
 }
+
+.mermaid {
+  text-align: center;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}

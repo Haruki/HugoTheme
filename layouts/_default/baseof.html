@@ -36,5 +36,17 @@ keksblock from baseof.html
 	{{- if .Param "showrss" }}<br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>{{ end }}
 </footer>
 {{ end }}
+{{ if findRE "language-mermaid" .Content }}
+<script src="{{ "js/mermaid.min.js" | relURL }}"></script>
+<script>
+  (function () {
+    var cfg = { securityLevel: 'loose', look: 'handDrawn' };
+    mermaid.initialize(cfg);
+    function render() { mermaid.run({ querySelector: 'pre > code.language-mermaid' }); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);
+    else render();
+  })();
+</script>
+{{ end }}
 </body>
 </html>
