@@ -4,7 +4,8 @@
 	<title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
 	<link rel="canonical" href="{{ .Site.BaseURL }}">
 	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
-	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+	<!-- Site is served at the LAN root without the baseURL prefix; fall back if the prefixed path 404s -->
+	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}" onerror="this.onerror=null;this.href='/css/style.css'">
 	{{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
 	{{ end -}}
 	<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Summary }}{{ end }}">
