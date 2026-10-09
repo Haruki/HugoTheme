@@ -37,14 +37,19 @@ keksblock from baseof.html
 </footer>
 {{ end }}
 {{ if findRE "language-mermaid" .Content }}
-<script src="{{ "js/mermaid.min.js" | relURL }}"></script>
 <script>
   (function () {
-    var cfg = { securityLevel: 'loose', look: 'handDrawn' };
-    mermaid.initialize(cfg);
-    function render() { mermaid.run({ querySelector: 'pre > code.language-mermaid' }); }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);
-    else render();
+    // Site is served both at the LAN root and under a /wiki/ subpath, so resolve
+    // the JS path from the current URL instead of baseURL.
+    var p = location.pathname.indexOf('/wiki/') === 0 ? '/wiki/' : '/';
+    var s = document.createElement('script');
+    s.src = p + 'js/mermaid.min.js';
+    s.onload = function () {
+      mermaid.initialize({ securityLevel: 'loose', look: 'handDrawn' });
+      mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+    };
+    s.onerror = function () { console.warn('mermaid.min.js not found at ' + s.src); };
+    document.head.appendChild(s);
   })();
 </script>
 {{ end }}
