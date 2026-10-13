@@ -57,5 +57,12 @@
           <!-- Scroll to top button -->
           <button id="scrollToTopBtn">☝️</button>
         </div>
+        {{ $hasMermaid := false }}
+        {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
+          {{ if and (ne .Kind "section") (not .IsHome) (findRE "language-mermaid" .Content) }}
+            {{ $hasMermaid = true }}
+          {{ end }}
+        {{ end }}
+        {{ if $hasMermaid }}{{ partial "mermaid-loader.html" . }}{{ end }}
       </body>
     </html>
