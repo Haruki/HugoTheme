@@ -3,7 +3,6 @@
 <head>
 	<title>{{ if not .IsHome }}{{ .Title | title }} | {{ end }}{{ .Site.Title }}</title>
 	<link rel="canonical" href="{{ .Site.BaseURL }}">
-	<link rel='alternate' type='application/rss+xml' title="{{ .Site.Title }} RSS" href='/index.xml'>
 	<!-- Site is served at the LAN root without the baseURL prefix; fall back if the prefixed path 404s -->
 	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}" onerror="this.onerror=null;this.href='/css/style.css'">
 	{{ with .Site.Params.favicon }}<link rel="icon" href="{{ . }}">
@@ -23,9 +22,6 @@
 {{ block "main" . }}
 {{ .Content }}
 {{ end }}
-{{ block "keks" .}}
-keksblock from baseof.html
-{{ end }}
 {{ if .Site.Params.disqus }}{{ partial "disqus.html" . -}}{{ end -}}
 {{ if .Param "nextprev" }}{{ partial "nextprev.html" . -}}{{ end -}}
 {{ if .Param "taglist" }}{{ partial "taglist.html" . }}{{ end -}}
@@ -34,7 +30,6 @@ keksblock from baseof.html
 {{ block "footer" . }}
 <footer>
 	<a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}</a>
-	{{- if .Param "showrss" }}<br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>{{ end }}
 </footer>
 {{ end }}
 {{ if findRE "language-mermaid" .Content }}{{ partial "mermaid-loader.html" . }}{{ end }}
