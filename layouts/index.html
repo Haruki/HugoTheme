@@ -27,7 +27,7 @@
           {{ range sort (where .Pages "Type" "not in" (slice "categories" "tags")) "Title" "asc" }}
           {{ if and (ne .Kind "section") (not .IsHome) }}
           <div class="article_nav" {{if .Params.tags }}data-tags="{{ delimit .Params.tags ", " }}"{{end}}>
-            <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
+            <a href="#article-{{ .Title | urlize }}">{{ .Title }}</a>
           </div>
           {{ end }}
           {{ end }}
@@ -36,20 +36,26 @@
         <div class="content">
           {{ range where .Site.Pages "Type" "not in" (slice "categories" "tags") }}
           {{ if and (ne .Kind "section") (not .IsHome) }}
-          <div class="article" id="{{ .Title | urlize}}">
+          {{ $slug := .Title | urlize }}
+          <div class="article" id="article-{{ $slug }}">
           {{ .Date.Format "2006 January 2" }}<br>
           {{ $showToc := or (.Param "showtoc") (.Param "toc") }}
           {{ $toc := .TableOfContents }}
           {{ $toc = replaceRE `(?s)^<nav id="TableOfContents">\s*<ul>\s*<li>\s*<ul>` `<nav id="TableOfContents"><ul>` $toc }}
           {{ $toc = replaceRE `(?s)</ul>\s*</li>\s*</ul>\s*</nav>$` `</ul></nav>` $toc }}
           {{ $toc = replaceRE `(?s)^(<nav id="TableOfContents">\s*<ul>)\s*<li>\s*</li>` `${1}` $toc }}
+          {{ $toc = replaceRE `href="#([^"]+)"` (printf "href=\"#%s-$1\"" $slug) $toc }}
+          {{ $toc = replaceRE `<nav id="TableOfContents">` (printf "<nav id=\"%s-toc\">" $slug) $toc }}
           {{ if and $showToc (gt (len $toc) 0) }}
           <div class="article-toc">
             <h2>Contents</h2>
             {{ $toc | safeHTML }}
           </div>
           {{ end }}
-          {{ .Content }}
+          {{ $content := .Content }}
+          {{ $content = replaceRE `<h([1-6]) id="([^"]+)"` (printf "<h$1 id=\"%s-$2\"" $slug) $content }}
+          {{ $content = replaceRE `href="#([^"]+)"` (printf "href=\"#%s-$1\"" $slug) $content }}
+          {{ $content | safeHTML }}
           {{if gt .WordCount 0}}<i>WordCount:</i>{{ .WordCount }}{{end}}</div>
           {{ end }} {{ end }}
         </div>
